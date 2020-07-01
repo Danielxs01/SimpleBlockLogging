@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -39,7 +40,13 @@ public class Config {
 	}
 
 	public synchronized void save() throws IOException {
-		yamlconfig.save(file);
+		try {
+			yamlconfig.save(file);
+		} catch (Exception e) {
+			Bukkit.getConsoleSender()
+					.sendMessage("§8[§aSimpleBlockLogging§8] §cDie Config konnte nicht gespeichert werden!");
+			Bukkit.getConsoleSender().sendMessage(e.getCause().toString());
+		}
 	}
 
 	public YamlConfiguration getConfig() {

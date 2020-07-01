@@ -1,12 +1,13 @@
 name: SimpleBlockLogging
-version: 0.1
+version: 0.1.2
 main: de.danielxs01.SimpleBlockLogging.SimpleBlockLogging
 author: SeltixSub
-load: STARTUP
+load: POSTWORLD
 prefix: §alSimpleBlockLogging
 database: false
 description: §8[§aSimpleBlockLogging§8] §7Speichert alle Informationen zu gesetzen Bloecken
 website: Currently not available
+softdepend: [BarAPI]
 commands:
    simpleblocklogging:
      description: Zeigt Optionen fuer LogBlock an

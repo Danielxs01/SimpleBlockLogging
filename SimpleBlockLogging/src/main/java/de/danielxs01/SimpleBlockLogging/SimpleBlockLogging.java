@@ -16,18 +16,26 @@ public class SimpleBlockLogging extends JavaPlugin {
 	public static final String TOOL_NAME = "§7§lSimpleBlockLogging Tool";
 	public static final String TOOL_LORE = "§fZeigt dir Informationen über den angeklickten / zerstörten Block!";
 	public static final String TOOL_ACTIONBAR = "§8~ §7Dein Tool: §8~";
+	private static final String COMMAND = "simpleBlockLogging";
 
 	private Config config;
 	private boolean debug = false;
+
+	@Override
+	public void onLoad() {
+
+		getLogger().info("Lade..");
+		ConfigurationSerialization.registerClass(SimpleBlockLoggingObject.class);
+		super.onLoad();
+
+	}
 
 	@Override
 	public void onEnable() {
 		getLogger().info("Starte..");
 		config = new Config(this, "blocks.yml");
 
-		ConfigurationSerialization.registerClass(SimpleBlockLoggingObject.class, "SimpleBlockLoggingObject");
-
-		getCommand("simpleBlockLogging").setExecutor(new CommandHandler());
+		getCommand(COMMAND).setExecutor(new CommandHandler());
 		Bukkit.getPluginManager().registerEvents(new BlockBreakHandler(this), this);
 		Bukkit.getPluginManager().registerEvents(new BlockPlaceHandler(this), this);
 
@@ -36,6 +44,7 @@ public class SimpleBlockLogging extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		getLogger().info("Stoppe..");
+		getCommand(COMMAND).setExecutor(null);
 	}
 
 	public Config config() {
@@ -48,8 +57,8 @@ public class SimpleBlockLogging extends JavaPlugin {
 
 	public void showDetails(Player p, Block b) {
 
-		if (!p.hasPermission(getCommand("simpleBlockLogging").getPermission())) {
-			p.sendMessage(getCommand("simpleBlockLogging").getPermissionMessage());
+		if (!p.hasPermission(getCommand(COMMAND).getPermission())) {
+			p.sendMessage(getCommand(COMMAND).getPermissionMessage());
 			return;
 		}
 
@@ -85,6 +94,10 @@ public class SimpleBlockLogging extends JavaPlugin {
 		String out = Character.toUpperCase(text.charAt(0)) + "";
 		out += text.substring(1, text.length()).toLowerCase();
 		return out;
+	}
+
+	public static boolean barAPIloaded() {
+		return Bukkit.getPluginManager().getPlugin("BarAPI") != null;
 	}
 
 }

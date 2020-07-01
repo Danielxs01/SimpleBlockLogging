@@ -10,10 +10,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.entity.Player;
 
-@SerializableAs("SimpleBlockLoggingObject")
 public class SimpleBlockLoggingObject implements ConfigurationSerializable {
 
 	private String location;
