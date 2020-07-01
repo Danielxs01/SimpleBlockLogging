@@ -2,6 +2,7 @@ package de.danielxs01.SimpleBlockLogging;
 
 import java.util.Arrays;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,9 +28,11 @@ public class CommandHandler implements CommandExecutor {
 				im.setLore(Arrays.asList(SimpleBlockLogging.TOOL_LORE));
 				wand.setItemMeta(im);
 
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-						new ComponentBuilder(SimpleBlockLogging.TOOL_ACTIONBAR).create());
-
+				if (Bukkit.getBukkitVersion().contains("1.7"))
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+							new ComponentBuilder(SimpleBlockLogging.TOOL_ACTIONBAR).create());
+				else
+					p.sendMessage(SimpleBlockLogging.TOOL_ACTIONBAR);
 				p.getInventory().addItem(wand);
 			} else {
 				sender.sendMessage("Dieser Befehl ist nur als Spieler ausführbar!");

@@ -15,7 +15,7 @@ public class SimpleBlockLogging extends JavaPlugin {
 
 	public static final String TOOL_NAME = "§7§lSimpleBlockLogging Tool";
 	public static final String TOOL_LORE = "§fZeigt dir Informationen über den angeklickten / zerstörten Block!";
-	public static final String TOOL_ACTIONBAR = "§aWOOOSH §8~ §7Dein Tool";
+	public static final String TOOL_ACTIONBAR = "§8~ §7Dein Tool: §8~";
 
 	private Config config;
 	private boolean debug = false;
@@ -47,6 +47,12 @@ public class SimpleBlockLogging extends JavaPlugin {
 	}
 
 	public void showDetails(Player p, Block b) {
+
+		if (!p.hasPermission(getCommand("simpleBlockLogging").getPermission())) {
+			p.sendMessage(getCommand("simpleBlockLogging").getPermissionMessage());
+			return;
+		}
+
 		List<SimpleBlockLoggingObject> list = config().getBlocks(b.getLocation());
 		Location l = b.getLocation();
 		String header = "§8---------- §7§lSimpleBlockLogging §8----------";

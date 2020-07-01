@@ -8,7 +8,7 @@ database: false
 description: §8[§aSimpleBlockLogging§8] §7Speichert alle Informationen zu gesetzen Bloecken
 website: Currently not available
 commands:
-   simpleBlockLogging:
+   simpleblocklogging:
      description: Zeigt Optionen fuer LogBlock an
      aliases: [lb, logblocks, sbl, bl, simplebl]
      permission: SimpleBlockLogging.command
@@ -18,14 +18,14 @@ commands:
        §8[§aSimpleBlockLogging§8] §7Beispiel: §a/<command> tool §8- §7Gibt dir das SimpleBlockLogging-Tool
        §8[§aSimpleBlockLogging§8] §7Beispiel: §a/<command> admin §8- §7Zeigt dir die Adminoptionen an
 permissions:
-   SimpleBlockLogging.*:
+   simpleblocklogging.*:
      description: Gives access to all Inferno commands
      children:
-       SimpleBlockLogging.command: true
-       SimpleBlockLogging.admin: true
-   SimpleBlockLogging.command:
+       simpleblocklogging.command: true
+       simpleblocklogging.admin: true
+   simpleblocklogging.command:
      description: §8[§aSimpleBlockLogging§8] §7Gibt dir Zugriff auf grundlegende Informationen
      default: true
-   SimpleBlockLogging.admin:
+   simpleblocklogging.admin:
      description: §8[§aSimpleBlockLogging§8] §7Gibt dir Zugriff auf alle Informationen
      default: not op

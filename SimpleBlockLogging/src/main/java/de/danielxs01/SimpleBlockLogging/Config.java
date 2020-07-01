@@ -38,7 +38,7 @@ public class Config {
 
 	}
 
-	public void save() throws IOException {
+	public synchronized void save() throws IOException {
 		yamlconfig.save(file);
 	}
 
