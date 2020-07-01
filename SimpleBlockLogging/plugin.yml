@@ -1,0 +1,31 @@
+name: SimpleBlockLogging
+version: 0.1
+main: de.danielxs01.SimpleBlockLogging.SimpleBlockLogging
+author: SeltixSub
+load: STARTUP
+prefix: §alSimpleBlockLogging
+database: false
+description: §8[§aSimpleBlockLogging§8] §7Speichert alle Informationen zu gesetzen Bloecken
+website: Currently not available
+commands:
+   simpleBlockLogging:
+     description: Zeigt Optionen fuer LogBlock an
+     aliases: [lb, logblocks, sbl, bl, simplebl]
+     permission: SimpleBlockLogging.command
+     permission-message: §8[§aSimpleBlockLogging§8] §cDir fehlt die Permission §4/<permission>
+     usage: |
+       §8[§aSimpleBlockLogging§8] §7Befehl: §a/<command>
+       §8[§aSimpleBlockLogging§8] §7Beispiel: §a/<command> tool §8- §7Gibt dir das SimpleBlockLogging-Tool
+       §8[§aSimpleBlockLogging§8] §7Beispiel: §a/<command> admin §8- §7Zeigt dir die Adminoptionen an
+permissions:
+   SimpleBlockLogging.*:
+     description: Gives access to all Inferno commands
+     children:
+       SimpleBlockLogging.command: true
+       SimpleBlockLogging.admin: true
+   SimpleBlockLogging.command:
+     description: §8[§aSimpleBlockLogging§8] §7Gibt dir Zugriff auf grundlegende Informationen
+     default: true
+   SimpleBlockLogging.admin:
+     description: §8[§aSimpleBlockLogging§8] §7Gibt dir Zugriff auf alle Informationen
+     default: not op
