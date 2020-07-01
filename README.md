@@ -1,4 +1,4 @@
-# SimpleBlockLogging Mc 1.12.x
+# SimpleBlockLogging MC 1.12.x
 [EN]
 SimpleBlockLogging logs every time someone places or breaks a block.
 
